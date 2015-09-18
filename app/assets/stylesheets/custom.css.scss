@@ -1,0 +1,58 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*----------------
+general
+----------------*/
+
+body {
+  background-color: #0fc;
+}
+
+.page-space {
+  max-width: 1200px;
+  margin: auto;
+  background-color: #fff;
+}
+
+/*----------------
+header
+----------------*/
+
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.navbar-lower {
+  margin-top: 50px;
+  background-color: #383232;
+  border-color: #383232;
+  height: 80px;
+  padding-top: 15px;
+  font-size: 1.2em;
+}
+
+/*----------------
+carousel
+----------------*/
+
+#myCarousel {
+  margin-top: 140px;
+  margin-bottom: 20px;
+}
+
+.carousel-inner {
+  max-height: 350px;
+  overflow: hidden;
+}
+
+/*----------------
+home
+----------------*/
+
+#main-info {
+  padding-left: 0;
+  background-color: #fff;
+}
+
