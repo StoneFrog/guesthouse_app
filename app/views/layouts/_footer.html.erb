@@ -6,12 +6,12 @@
         <h3>Menu</h3>
       </div>
       <ul class="list-unstyled footer-links">
-        <li><%= link_to "Home", '#' %></li>
-        <li><%= link_to "About", '#' %></li>
-        <li><%= link_to "Activities", '#' %></li>
-        <li><%= link_to "Gallery", '#' %></li>
-        <li><%= link_to "Prices", '#' %></li>
-        <li><%= link_to "Booking", '#' %></li>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", "#{about_path}#rooms" %></li>
+        <li><%= link_to "Activities", "#{activities_path}#winter" %></li>
+        <li><%= link_to "Gallery", gallery_path %></li>
+        <li><%= link_to "Prices", prices_path %></li>
+        <li><%= link_to "Booking", reservation_path %></li>
       </ul>
     </section>
 

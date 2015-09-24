@@ -6,7 +6,7 @@
         <ul class="nav navbar-nav">
           <li><%= link_to "+48666666666", '#' %></li><!-- Add sign -->
           <li><%= link_to "guesthouse@guesthouse.com", '#' %></li><!-- Add sign -->
-          <li><%= link_to "Booking", '#' %></li><!-- Add sign -->
+          <li><%= link_to "Booking", reservation_path %></li><!-- Add sign -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "F", '#' %></li> <!-- facebook -->
@@ -20,32 +20,32 @@
   <nav class="navbar navbar-inverse navbar-fixed-top navbar-lower">
     <div class="container">
       <div class="navbar-header">
-        <%= link_to '<i class="glyphicon glyphicon-tent"></i>'.html_safe, '#' %>    
+        <%= link_to '<i class="glyphicon glyphicon-tent"></i>'.html_safe, root_path %>   
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right ">
-          <li class="middle-top-navbar-2"><%= link_to "Home", '#' %></li>
+          <li class="middle-top-navbar-2"><%= link_to "Home", root_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="middle-top-navbar">About<span class="caret"></span></span></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Rooms", '#' %></li>
-              <li><%= link_to "Facilities", '#' %></li>
-              <li><%= link_to "Restaurant", '#' %></li>
+              <li><%= link_to "Rooms", "#{about_path}#rooms" %></li>
+              <li><%= link_to "Facilities", "#{about_path}#facilities" %></li>
+              <li><%= link_to "Restaurant", "#{about_path}#restaurant" %></li>
             </ul>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="middle-top-navbar">Activities<span class="caret"></span></span></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Winter", '#' %></li>
-              <li><%= link_to "Summer", '#' %></li>
+              <li id="winter-link"><%= link_to "Winter", "#{activities_path}#winter" %></li>
+              <li id="summer-link"><%= link_to "Summer", "#{activities_path}#summer" %></li>
             </ul>
           </li>
-          <li class="middle-top-navbar-2"><%= link_to "Gallery", '#' %></li>
-          <li class="middle-top-navbar-2"><%= link_to "Prices", '#' %></li>
-          <li class="middle-top-navbar-2"><%= link_to "Contact", '#' %></li>
+          <li class="middle-top-navbar-2"><%= link_to "Gallery", gallery_path %></li>
+          <li class="middle-top-navbar-2"><%= link_to "Prices", prices_path %></li>
+          <li class="middle-top-navbar-2"><%= link_to "Contact", contact_path %></li>
         </ul>
       </div>
     </div>
   </nav> 
-
+  
 </header>
