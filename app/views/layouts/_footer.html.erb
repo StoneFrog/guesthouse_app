@@ -1,0 +1,53 @@
+<footer class="footer-layout">
+  <div class= "container">
+
+    <section class="col-xs-6 col-sm-4">
+      <div class="footer-title">
+        <h3>Menu</h3>
+      </div>
+      <ul class="list-unstyled footer-links">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", "#{about_path}#rooms" %></li>
+        <li><%= link_to "Activities", "#{activities_path}#winter" %></li>
+        <li><%= link_to "Gallery", gallery_path %></li>
+        <li><%= link_to "Prices", prices_path %></li>
+        <li><%= link_to "Booking", reservation_path %></li>
+      </ul>
+    </section>
+
+    <section class="col-xs-6 col-sm-4">
+      <div class="footer-title">
+        <h3>Follow us!</h3>
+      </div>
+      <div  class="footer-links">
+        <%= link_to "F", '#' %>
+        <%= link_to "I", '#' %>
+        <%= link_to "T", '#' %>
+      </div>
+    </section>
+
+    <section class="col-xs-6 col-sm-4">
+      <div class="footer-title">
+        <h3>Contact</h3>
+      </div>
+      <div class="footer-text">
+        <p>guesthouse_name</p>
+        <p>
+          Rusinski Wierch XX<br>
+          XX-XXX Bukowina Tatrzanska
+        </p>
+        <p>+48666666666</p>
+        <p>guesthouse@guesthouse.com</p>
+        <p class="footer-links">
+          <%= link_to "Map", "https://www.google.pl/maps/place/49%C2%B021'22.8%22N+20%C2%B006'43.7%22E/@49.3561414,20.1121605,16z/data=!4m2!3m1!1s0x0:0x0", :target => "_blank" %>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="endnote">
+    Copyright by Mateusz Marchel
+  </section>
+      
+</footer>
