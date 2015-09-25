@@ -1,14 +1,9 @@
-<script>
-  jQuery(function($){ 
-        $('#group1 > div.rthumbnail').responsivegallery()
-  })
-</script>
 
 <section class="container">
-  <div class="jumbotron elegant">
+  <div id="group1" class="jumbotron elegant">
     <h2>Check out our gallery!</h2>
     <h3>Rooms</h3>
-    <div id="group1">
+
       <div class="rthumbnail">
         <%= link_to( image_tag("thumbnails/room1_thumb.jpg"), 
                     image_path("pictures/room1.jpg")) %>
@@ -68,9 +63,9 @@
                     image_path("pictures/room10.jpg")) %>
         <div class="rcaption">Caption text</div>
       </div>
-    </div>
+
     <h3>Facilities</h3>
-    <div id="group1">
+
       <div class="rthumbnail">
         <%= link_to( image_tag("thumbnails/facilities1_thumb.jpg"), 
                     image_path("pictures/facilities1.jpg")) %>
@@ -106,9 +101,9 @@
                     image_path("pictures/facilities6.jpg")) %>
         <div class="rcaption">Caption text</div>
       </div>
-    </div>
+
     <h3>Activities</h3>
-    <div id="group1">
+
       <div class="rthumbnail">
         <%= link_to( image_tag("thumbnails/activities1_thumb.jpg"), 
                     image_path("pictures/activities1.jpg")) %>
@@ -174,9 +169,9 @@
                     image_path("pictures/activities11.jpg")) %>
         <div class="rcaption">Caption text</div>
       </div>
-    </div>
+
     <h3>Events</h3>
-    <div id="group1">
+
       <div class="rthumbnail">
         <%= link_to( image_tag("thumbnails/events1_thumb.jpg"), 
                     image_path("pictures/events1.jpg")) %>
@@ -206,9 +201,9 @@
                     image_path("pictures/events5.jpg")) %>
         <div class="rcaption">Caption text</div>
       </div>
-    </div>
+
     <h3>Nature</h3>
-    <div id="group1">
+
       <div class="rthumbnail">
         <%= link_to( image_tag("thumbnails/nature1_thumb.jpg"), 
                     image_path("pictures/nature1.jpg")) %>
@@ -232,6 +227,6 @@
                     image_path("pictures/nature4.jpg")) %>
         <div class="rcaption">Caption text</div>
       </div>
-    </div>
+
   </div>
 </section>

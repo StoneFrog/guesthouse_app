@@ -12,11 +12,40 @@
                                             'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script>
+    $(function () {
+    // Scroll to function
+      function scrollTo(ele) {
+        $("html, body").animate({
+            scrollTop: ($(ele).offset().top - $("header").outerHeight(true))
+        });
+      }
+
+    // Detect location hash
+      if (window.location.hash) {
+        scrollTo(window.location.hash);
+      }
+
+    // Detect urlchange
+      $(window).on('hashchange', function(e) {
+        scrollTo(window.location.hash);
+        e.preventDefault();
+      });
+    });
+  </script>
+
+
   <%= render 'layouts/shim' %>
 </head>
 
 <body>
+
   <div class="page-space">
+    <script>
+      jQuery(function($){ // on DOM load
+      $("#group1 > div.rthumbnail").responsivegallery()
+      })
+    </script>
 
     <%= render 'layouts/header' %>
 
