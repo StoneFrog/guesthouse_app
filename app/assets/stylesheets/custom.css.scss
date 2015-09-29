@@ -212,6 +212,22 @@ input, textarea, select, .uneditable-input {
   }
 }
 
+.checkbox {
+  float: left;
+  margin-top: -10px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
 /*----------------
 contact
 ----------------*/
