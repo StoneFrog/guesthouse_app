@@ -89,11 +89,27 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "phone should be standardized" do
+    idiotic_phone_numbers = ["+ 69 5-595-595", "+48 (505) 5454545 5"]
+    idiotic_phone_numbers.each do |idiotic_phone_number|
+      @user.phone = convert_phone_number(idiotic_phone_number)
+      @user.save
+      assert_equal idiotic_phone_number.tr('\ \-', ""), @user.reload.phone
+    end
+  end
+
   test "email should be unique" do 
     duplicate_user = @user.dup 
     duplicate_user.email = @user.email.upcase
     @user.save
     assert_not duplicate_user.valid?
+  end
+
+  test "email should be downcased" do 
+    mixed_case_email = "Foo@ExAMPLe.CoM"
+    @user.email = mixed_case_email
+    @user.save
+    assert_equal mixed_case_email.downcase, @user.reload.email
   end
 
   test "password should be present" do

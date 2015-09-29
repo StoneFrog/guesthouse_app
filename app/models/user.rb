@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
+  before_save { self.phone = convert_phone_number(phone)}
   validates :name, presence: true, length: { maximum: 50 }
   validates :surname, presence: true, length: { maximum: 75 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -11,4 +12,8 @@ class User < ActiveRecord::Base
                     format: { with: VALID_PHONE_REGEX }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+  def convert_phone_number(phone_number)
+    phone_number.tr('\ \-', "")
+  end
 end
