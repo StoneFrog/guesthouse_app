@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates :phone, allow_blank: true, length: { in: 7..20 },
                     format: { with: VALID_PHONE_REGEX }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   # Removes unnecessary signs from give phone number
   def convert_phone_number(phone_number)
