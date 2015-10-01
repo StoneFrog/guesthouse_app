@@ -10,7 +10,8 @@ User.create!(name:  "Example",
              email: "example@railstutorial.org",
              phone: "+48665273066",
              password:              "foobar",
-             password_confirmation: "foobar")
+             password_confirmation: "foobar",
+             admin: true)
 
 99.times do |n|
   full_name_array = Faker::Name.name.split(" ")

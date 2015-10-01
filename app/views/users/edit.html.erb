@@ -1,35 +1,10 @@
+<% provide(:button_text, "Save changes") %>
 <div class="container">
   <h1>Update your profile</h1>
 
   <div class="row">
     <div class="col-xs-6 signup-form">
-      <%= form_for(@user) do |f| %>
-        <%= render 'shared/error_messages' %>
-        <div class="col-xs-6">
-          <%= f.label :name, "Name*" %>
-          <%= f.text_field :name, class: 'form-control' %>
-
-          <%= f.label :email, "Email*" %>
-          <%= f.email_field :email, class: 'form-control' %>
-
-          <%= f.label :password, "Password*" %>
-          <%= f.password_field :password, class: 'form-control' %>
-        </div>
-
-        <div class="col-xs-6">
-          <%= f.label :surname, "Surname*"%>
-          <%= f.text_field :surname, class: 'form-control' %>
-
-          <%= f.label :phone, "Phone" %>
-          <%= f.text_field :phone, class: 'form-control' %>
-
-          <%= f.label :password_confirmation, "Confirmation*" %>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
-        </div>
-
-        <%= f.submit "Save changes", 
-        class: "btn btn-primary signup-button" %>
-      <% end %>
+      <%= render 'form' %>
     </div>
   </div>
 </div>

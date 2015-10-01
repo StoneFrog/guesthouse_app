@@ -5,6 +5,7 @@ michael:
   email: michael@example.com
   phone: +48665273066
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 archer:
   name: Sterling
