@@ -47,7 +47,9 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="middle-top-navbar">Account<span class="caret"></span></span></a>
               <ul class="dropdown-menu">
                 <!-- change below to display that only for admin -->
-                <li><%= link_to "Show clients", users_path %></li> 
+                <% if current_user.admin? %>
+                  <li><%= link_to "Show clients", users_path %></li> 
+                <% end %>
                 <!-- end change -->
                 <li><%= link_to "Profile", current_user %></li>
                 <li>

@@ -8,11 +8,6 @@ class UsersControllerTest < ActionController::TestCase
     @another_user = users(:archer)
   end
 
-  #to be refactored when admin parameter will be added
-  #test "should redirect index when not admin" do 
-  #  get :index
-  #  assert_redirected_to root_url
-  #end
   test "should redirect index when not logged in" do 
     get :index
     assert_redirected_to login_url
@@ -21,6 +16,12 @@ class UsersControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
+  end
+
+  test "redirect when not logged user tries to display" do 
+    get :show, id: @user
+    assert_not flash.empty?
+    assert_redirected_to login_url
   end
 
   test "redirect when not logged user tries to edit" do 
@@ -68,6 +69,23 @@ class UsersControllerTest < ActionController::TestCase
       delete :destroy, id: @user
     end
     assert_redirected_to root_url
+    assert_no_difference 'User.count' do 
+      delete :destroy, id: @other_user
+    end
+  end
+
+  test "should destroy when logged in as a non-admin deletes himself" do 
+    log_in_as(@another_user)
+    assert_difference 'User.count', -1 do 
+      delete :destroy, id: @another_user
+    end
+  end
+
+  test "should destroy everyone when logged in as admin" do 
+    log_in_as(@user)
+    assert_difference 'User.count', -1 do 
+      delete :destroy, id: @another_user
+    end
   end
 
   #Add test to destroy as admin - should work 

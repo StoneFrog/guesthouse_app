@@ -7,8 +7,6 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     @non_admin = users(:archer)
   end
 
-  # Has to be changed after admin parameter to
-  # log_in_as(@admin)
   test "index as admin including pagination and delete links" do 
     log_in_as(@admin)
     get users_path
@@ -26,10 +24,15 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     end
   end
 
-  #Change to redirect to root_url
   test "index as non-admin" do
     log_in_as(@non_admin)
     get users_path
-    assert_select 'a', text: 'delete', count: 0
+    assert_redirected_to root_url
+  end
+
+  test "index as admin" do 
+    log_in_as(@admin)
+    get users_path
+    assert_response :success
   end
 end
