@@ -88,9 +88,6 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
-  #Add test to destroy as admin - should work 
-  #Add test to destroy other non admin - shouldn't work - can be the existing one
-
   test "should not allow the admin attribute to be edited via the web" do 
     log_in_as(@another_user)
     assert_not @another_user.admin?

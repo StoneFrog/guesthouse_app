@@ -11,14 +11,18 @@ User.create!(name:  "Example",
              phone: "+48665273066",
              password:              "foobar",
              password_confirmation: "foobar",
-             admin: true)
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
 
 User.create!(name:  "Non",
              surname: "Admin",
              email: "nonadmin@railstutorial.org",
              phone: "+48666656565",
              password:              "foobar",
-             password_confirmation: "foobar")
+             password_confirmation: "foobar",
+             activated: true,
+             activated_at: Time.zone.now)
 
 99.times do |n|
   full_name_array = Faker::Name.name.split(" ")
@@ -32,5 +36,7 @@ User.create!(name:  "Non",
                 email: email, 
                 phone: phone,
                 password:              password,
-                password_confirmation: password)
+                password_confirmation: password,
+                activated: true,
+                activated_at: Time.zone.now)
 end
