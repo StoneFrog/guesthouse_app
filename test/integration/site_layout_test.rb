@@ -38,7 +38,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href^=?]", edit_user_path(@non_admin)
     assert_select "a[href^=?]", logout_path
     get edit_user_path(@non_admin)
-    assert_select 'a[href=?]', user_path(@non_admin), { text: 'delete', count: 1 }
+    assert_select 'a[href=?]', user_path(@non_admin), { text: 'Delete Account', count: 1 }
   end
 
 end
