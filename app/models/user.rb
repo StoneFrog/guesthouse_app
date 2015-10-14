@@ -1,4 +1,8 @@
+require './lib/common_model_functions.rb'
+
 class User < ActiveRecord::Base
+  include CommonModelFunctions
+  has_many :reservations
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_save :convert_phone_number
@@ -72,16 +76,6 @@ class User < ActiveRecord::Base
   end
 
   private 
-
-    # Converts email to all lower-case
-    def downcase_email
-      self.email = email.downcase
-    end
-
-    # Removes unnecessary characters from phone number
-    def convert_phone_number
-      self.phone = phone.tr('\ \-', "")
-    end
 
     # Creates and assigns the activation token and digest.
     def create_activation_digest

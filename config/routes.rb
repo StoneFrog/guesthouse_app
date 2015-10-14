@@ -5,14 +5,16 @@ Rails.application.routes.draw do
   get 'prices'      => 'static_pages#prices'
   get 'gallery'     => 'static_pages#gallery'
   get 'contact'     => 'static_pages#contact'
-  get 'reservation' => 'static_pages#reservation'
   get 'signup'      => 'users#new'
   get    'login'    => 'sessions#new'
   post   'login'    => 'sessions#create'
   delete 'logout'   => 'sessions#destroy'
+  get 'reservation' => 'reservations#new'
+
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :reservations,        only: [:new, :create, :edit, :update, :destroy]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

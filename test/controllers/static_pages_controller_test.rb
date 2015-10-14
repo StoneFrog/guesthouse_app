@@ -32,9 +32,4 @@ class StaticPagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get reservation" do
-    get :reservation
-    assert_response :success
-  end
-
 end

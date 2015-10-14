@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  #change index to new before action 'admin_user' and allow index
-  #page only for admin user
   before_action :logged_in_user, only:        [:index, :show, :edit, :update, :destroy]
   before_action :correct_user, only:          [:edit, :update]
   before_action :correct_user_or_admin, only: [:show, :destroy]

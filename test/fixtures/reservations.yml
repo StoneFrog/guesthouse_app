@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+last:
+  name: Michael 
+  surname: Example
+  email: michael@example.com
+  phone: +48665273066
+  room: '1'
+  confirmation: false
+  checkin: <%= Time.zone.now.midday.advance(months: 6) %>
+  checkout: <%= Time.zone.now.midday.advance(months: 6, days: 10) %>
+
+first:
+  name: Sterling
+  surname: Archer 
+  email: duchess@example.gov
+  phone: +42569569569
+  room: '1'
+  confirmation: false
+  checkin: <%= Time.zone.now.midday.advance(months: 2) %>
+  checkout: <%= Time.zone.now.midday.advance(months: 2, days: 7) %>
+
+middle:
+  name: Lana
+  surname: Kane
+  email: hands@example.gov
+  phone: +42569569452
+  room: '2'
+  confirmation: false
+  checkin: <%= Time.zone.now.midday.advance(months: 4) %>
+  checkout: <%= Time.zone.now.midday.advance(months: 4, days: 8) %>

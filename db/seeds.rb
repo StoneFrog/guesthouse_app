@@ -40,3 +40,32 @@ User.create!(name:  "Non",
                 activated: true,
                 activated_at: Time.zone.now)
 end
+
+# Fake few reservations (not ovaerlaping yet - feature not implemented)
+Reservation.create!(name: "Michael",
+                    surname: "Example",
+                    email: "michael@example.com",
+                    phone: "+48665273066",
+                    room: '1',
+                    confirmation: false,
+                    checkin: Time.zone.now.midday.advance(months: 6),
+                    checkout: Time.zone.now.midday.advance(months: 6, days: 10))
+
+Reservation.create(name: "Michael",
+                    surname: "Example",
+                    email: "michael_3@example.com",
+                    phone: "+48665273066",
+                    room: '1',
+                    confirmation: false,
+                    checkin: Time.zone.now.midday.advance(months: 5, days: 1),
+                    checkout: Time.zone.now.midday.advance(months: 6, days: 8)).valid?
+=begin
+Reservation.new(name: 'Michael',
+                surname: 'Example',
+                email: 'michael_1@example.com',
+                phone: '+48665273066',
+                room: '1',
+                confirmation: false,
+                 checkin: Time.zone.now.midday.advance(months: 6, days: 11),
+                 checkout: Time.zone.now.midday.advance(months: 6, days: 14))
+=end        

@@ -16,7 +16,4 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
-
-  def reservation
-  end
 end
