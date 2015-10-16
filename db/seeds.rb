@@ -48,17 +48,17 @@ Reservation.create!(name: "Michael",
                     phone: "+48665273066",
                     room: '1',
                     confirmation: false,
-                    checkin: Time.zone.now.midday.advance(months: 6),
-                    checkout: Time.zone.now.midday.advance(months: 6, days: 10))
+                    checkin: Time.zone.now.midday.advance(months: 3),
+                    checkout: Time.zone.now.midday.advance(months: 3, days: 10))
 
-Reservation.create(name: "Michael",
+Reservation.create!(name: "Michael",
                     surname: "Example",
-                    email: "michael_3@example.com",
+                    email: "michael@example.com",
                     phone: "+48665273066",
                     room: '1',
                     confirmation: false,
-                    checkin: Time.zone.now.midday.advance(months: 5, days: 1),
-                    checkout: Time.zone.now.midday.advance(months: 6, days: 8)).valid?
+                    checkin: Time.zone.now.midday.advance(months: 1, days: 1),
+                    checkout: Time.zone.now.midday.advance(months: 1, days: 8))
 =begin
 Reservation.new(name: 'Michael',
                 surname: 'Example',

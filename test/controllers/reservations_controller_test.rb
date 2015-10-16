@@ -20,5 +20,4 @@ class ReservationsControllerTest < ActionController::TestCase
     assert_select "input[id=reservation_name][value=?]", @user.name
   end
 
-
 end

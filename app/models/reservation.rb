@@ -10,8 +10,7 @@ class Reservation < ActiveRecord::Base
   validates :surname, presence: true, length: { maximum: 75 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, 
-                    format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false}
+                    format: { with: VALID_EMAIL_REGEX }
   VALID_PHONE_REGEX = /\A\+?[\d\s\-\(\)]{7,19}\z/
   validates :phone, allow_blank: true, length: { in: 7..20 },
                     format: { with: VALID_PHONE_REGEX }
@@ -20,6 +19,7 @@ class Reservation < ActiveRecord::Base
   validates :checkin, presence: true
   validates :checkout, presence: true
   validate :checkin_and_checkout_date_has_to_be_free
+  validate :checkin_has_to_be_before_checkout
   # add above that only where room is same as checkin room and write tests about it 
 
   private
@@ -37,6 +37,13 @@ class Reservation < ActiveRecord::Base
       end
     end
 
+    def checkin_has_to_be_before_checkout
+      if checkout_and_checkin_not_nil?
+        errors.add(:base, 'Checkin has to be before checkout') if (checkin >= checkout)
+      end
+    end
+
+    # Methods clarifying conditional statements
     def are_there_any_reservations?(reservation_list)
       reservation_list.any?
     end
@@ -65,10 +72,4 @@ class Reservation < ActiveRecord::Base
       does_reservation_ends_before_already_booked_stay?(reservation_dates) || does_reservation_starts_after_already_booked_stay?(reservation_dates)
     end
 
-
-
-
 end
-
-#((reservation.checkin.any?) && (reservation.checkout.any?) && (checkin.any?) && (checkout.any?))
-#(!(reservation.checkin.nil?) && !(reservation.checkout.nil?) && !(checkin.nil?) && !(checkout.nil?))

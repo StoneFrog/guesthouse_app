@@ -173,6 +173,13 @@ class ReservationTest < ActiveSupport::TestCase
     assert_not @test_reservation.valid?
   end
 
+  test "checkout cannot be before checkin" do 
+    @reservation.save
+    @test_reservation.checkout = @reservation.checkin.advance(days: -5)
+    @test_reservation.checkin = @test_reservation.checkout.advance(days: 4)
+    assert_not @test_reservation.valid?, "#{@reservation.errors.messages}"
+  end
+
   test "if booked in free time should be valid" do
     @reservation.save
     @test_reservation.checkin = @reservation.checkout.advance(days: 1)
@@ -200,5 +207,7 @@ class ReservationTest < ActiveSupport::TestCase
     @test_reservation.room = "2"
     assert @test_reservation.valid?
   end
+
+
 
 end

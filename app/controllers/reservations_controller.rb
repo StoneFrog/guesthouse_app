@@ -9,7 +9,6 @@ class ReservationsController < ApplicationController
     else
       @reservation = Reservation.new
     end
-
   end
 
   def create
@@ -34,6 +33,20 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
+  end
+
+  # initial implementation to make ajax query working
+  def booked_dates
+    reservations = Reservation.where("room = ?", room)
+    booked_dates = []
+    reservations.each do |reservation|
+      booked_dates.push("#{reservation.checkin}", "#{reservation.checkout}")
+    end
+      respond_to do |format|
+      format.html
+      format.js
+    end
+    return booked_dates
   end
 
   private

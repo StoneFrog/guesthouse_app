@@ -239,9 +239,56 @@ input, textarea, select, .uneditable-input {
   }
 }
 
+.left-col {
+  padding-left: 0;
+}
+
+.right-col {
+  padding-right: 0;
+}
+
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+/*----------------
+booking
+----------------*/
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+/*----------------
+datepicker
+----------------*/
+
+.datepicker {
+  padding: 4px 0;
+}
+
+.label-separator {
+  margin-left: 100px;
+}
+
+.input-group {
+  display: inline-table;
+}
+
+.input-sm {
+  border-radius: 3px !important;
+}
+
+.input-daterange .input-group-addon {
+  padding: 4px 12px;
+  background-color: #FFF;
+  border-top: none;
+  border-bottom: none;
+}
+
+.input-group.date .input-group-addon {
+  cursor: none;
 }
 
 /*----------------
@@ -259,6 +306,7 @@ contact
   width: 1100px;
   margin: auto;
 }
+
 /*----------------
 gallery
 ----------------*/
