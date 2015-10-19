@@ -1,5 +1,5 @@
 <script>
-$(document).on("page:change", function(){
+$(document).ready(function(){
   var array = [];
   <% Reservation.where("room = ?", @reservation.room).each do |reservation| %>
     <% ((reservation.checkin.to_datetime)..(reservation.checkout.to_datetime)).each do |date| %>
