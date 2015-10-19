@@ -1,0 +1,7 @@
+$.ajax({
+  url: "/reservation",
+  success: function() {
+    $( "#reservation_form" ).html("<%= j(render('reservation_form', locals: {reservation: @reservation})) %>");
+  }
+});
+

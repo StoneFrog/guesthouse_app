@@ -1,69 +1,25 @@
-<script type="text/javascript">
-  $(document).ready(function(){
-    var array = [];
-    <% Reservation.where("room = ?", "1" ).each do |reservation| %>
-      <% ((reservation.checkin.to_datetime)..(reservation.checkout.to_datetime)).each do |date| %>
-        array.push("<%= date.strftime("%d/%m/%Y") %>")
-      <% end %>
-    <% end %>
-    
-    $('.datepicker').datepicker({
-      format: "dd MM yyyy",
-      startDate: "0d",
-      endDate: "+1y",
-      autoclose: true,
-      datesDisabled: array
-    });
-  });
-</script>
-
 <div class="container">
-  <h1>Book your stay!</h1>
+  <h1>Choose your room and book your stay!</h1>
+
+  <%= link_to "Room1", reservation_path, 
+              class: "room-links selected-room", name: "1", remote: true,
+              data: {text_color: "#AE1212", font_style: "underline"} %>
+  <%= link_to "Room2", room2_new_reservation_path, class: "room-links",
+              name: "2", remote: true,
+              data: {text_color: "#AE1212", font_style: "underline"} %>
+  <%= link_to "Room3", room3_new_reservation_path, class: "room-links",
+              name: "3", remote: true,
+              data: {text_color: "#AE1212", font_style: "underline"} %>
+  <%= link_to "Room4", room4_new_reservation_path, class: "room-links",
+              name: "4", remote: true,
+              data: {text_color: "#AE1212", font_style: "underline"} %>
+  <%= link_to "Room5", room5_new_reservation_path, class: "room-links",
+              name: "5", remote: true,
+              data: {text_color: "#AE1212", font_style: "underline"} %>
 
   <div class="row">
     <div class="col-xs-6 signup-form">
-      <%= form_for(@reservation) do |f| %>
-        <%= render 'shared/reservations_error_messages' %>
-        <div class="col-xs-6 left-col">
-          <%= f.label :name, "Name*" %>
-          <%= f.text_field :name, class: 'form-control' %>
-
-          <%= f.label :email, "Email*" %>
-          <%= f.email_field :email, class: 'form-control' %>
-
-        </div>
-
-        <div class="col-xs-6 right-col">
-          <%= f.label :surname, "Surname*"%>
-          <%= f.text_field :surname, class: 'form-control' %>
-
-          <%= f.label :phone, "Phone" %>
-          <%= f.text_field :phone, class: 'form-control' %>
-
-        </div>
-
-        
-        <div class="input-group date datepicker input-daterange">
-          <%= f.label :checkin, "Checkin*" %>
-          <%= f.text_field :checkin, class: 'form-control input-sm' %>
-
-          <span class="input-group-addon"></span>
-
-          <%= f.label :checkout, "Checkout*" %>
-          <%= f.text_field :checkout, class: 'form-control input-sm' %>
-        </div>
-
-        <%= f.label :room, "Select room" %>
-          <div class="form-group">
-            <%= f.select :room, options_for_select([['room 1', '1'], 
-                                    ['room 2', '2'], ['room 3', '3'], 
-                                    ['room 4', '4'], ['room 5', '5']], '1'),
-                                    class: 'form-control' %>
-          </div>
-
-        <%= f.submit "Book", 
-        class: "btn btn-primary signup-button" %>
-      <% end %>
+      <%= render 'reservation_form' %>
     </div>
   </div>
 </div>

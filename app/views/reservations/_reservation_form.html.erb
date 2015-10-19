@@ -1,0 +1,54 @@
+<script>
+$(document).on("page:change", function(){
+  var array = [];
+  <% Reservation.where("room = ?", @reservation.room).each do |reservation| %>
+    <% ((reservation.checkin.to_datetime)..(reservation.checkout.to_datetime)).each do |date| %>
+      array.push("<%= date.strftime("%d/%m/%Y") %>")
+    <% end %>
+  <% end %>
+   
+  $('.datepicker').datepicker({
+    format: "dd MM yyyy",
+    startDate: "0d",
+    endDate: "+1y",
+    autoclose: true,
+    datesDisabled: array
+  });
+});
+</script>
+
+<div id="reservation_form">
+<%= form_for(@reservation, remote: true) do |f| %>
+        <%= render 'shared/reservations_error_messages' %>
+        <div class="col-xs-6 left-col">
+          <%= f.label :name, "Name*" %>
+          <%= f.text_field :name, class: 'form-control' %>
+
+          <%= f.label :email, "Email*" %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="col-xs-6 right-col">
+          <%= f.label :surname, "Surname*"%>
+          <%= f.text_field :surname, class: 'form-control' %>
+
+          <%= f.label :phone, "Phone" %>
+          <%= f.text_field :phone, class: 'form-control' %>
+        </div>
+        
+        <div class="input-group date datepicker input-daterange">
+          <%= f.label :checkin, "Checkin*" %>
+          <%= f.text_field :checkin, class: 'form-control input-sm' %>
+
+          <span class="input-group-addon"></span>
+
+          <%= f.label :checkout, "Checkout*" %>
+          <%= f.text_field :checkout, class: 'form-control input-sm' %>
+        </div>
+
+        <%= hidden_field_tag 'reservation[room]', @reservation.room %>
+
+        <%= f.submit "Book", 
+        class: "btn btn-primary signup-button" %>
+      <% end %>
+</div>

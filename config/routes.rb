@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :reservations,        only: [:new, :create, :edit, :update, :destroy]
+  resources :reservations,        only: [:new, :create, :edit, :update, :destroy] do
+    get 'room2', 'room3', 'room4', 'room5', on: :new
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,26 @@
+<h1>Guesthouse_name</h1>
+
+<p>Dear <%= @reservation.name %> <%= @reservation.surname %>, </p>
+
+<p>
+  Thanks for reserving place in our guesthouse. 
+</p>
+<p>
+  Your request has been accepted. In order to confirm the reservation, please transfer 40% of the total price within the next 3 days. After that time the reservation will be canceled.
+</p>
+<p>
+  Details of the reservation: <br>
+  Name: <%= @reservation.name %> <%= @reservation.surname %>, <br>
+  Email: <%= @reservation.email %>, <br>
+  Phone: <%= @reservation.phone %>, <br>
+  Chosen room: <%= @reservation.room %>, <br>
+  Date: <%= @reservation.checkin.strftime("%d %B %Y") %> - 
+  <%= @reservation.checkout.strftime("%d %B %Y") %> <br>
+</p>
+<p>
+  In case of any questions, please contact us via mail helpdesk@guesthouse_name.com or call +4856565656565. 
+</p>
+<p>
+  Regards, 
+  crew of the guesthouse_name.
+</p>

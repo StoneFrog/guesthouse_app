@@ -1,0 +1,16 @@
+Dear <%= @reservation.name %> <%= @reservation.surname %>,
+
+
+Thanks for reserving place in our guesthouse. Your request has been accepted. In order to confirm the reservation, please transfer 40% of the total price within the next 3 days. After that time the reservation will be canceled.
+
+Details of the reservation:
+Name: <%= @reservation.name %> <%= @reservation.surname %>,
+Email: <%= @reservation.email %>,
+Phone: <%= @reservation.phone %>,
+Chosen room: <%= @reservation.room %>,
+Date: <%= @reservation.checkin.strftime("%d %B %Y") %> - <%= @reservation.checkout.strftime("%d %B %Y") %>
+
+In case of any questions, please contact us via mail helpdesk@guesthouse_name.com or call +4856565656565. 
+
+Regards, 
+crew of the guesthouse_name.

@@ -1,13 +1,12 @@
 class ReservationsController < ApplicationController
 
   def new
-    if logged_in?
-      @reservation = Reservation.new(name: current_user.name, 
-                                     surname: current_user.surname,
-                                     email: current_user.email, 
-                                     phone: current_user.phone)
-    else
-      @reservation = Reservation.new
+    # Default room is 1. Can be changed in the view
+    new_reservation
+
+    respond_to do |format|
+      format.html 
+      format.js
     end
   end
 
@@ -17,13 +16,21 @@ class ReservationsController < ApplicationController
     else
       @reservation = Reservation.new(reservation_params)
     end
-    if @reservation.save
-      # not final implementation - send notification email, 
-      # flash and redirect to url
-      redirect_to root_url
-    else
-      render 'new'
+
+    respond_to do |format|
+      if @reservation.save
+        ReservationMailer.preliminary_reservation(@reservation).deliver_now
+        flash[:info] = "Reservation submitted successfuly. 
+                        Please check your email for further instructions or 
+                        contact us in case of problems."
+        format.html 
+        format.js { render js: "window.location.href='"+root_url+"'" }
+      else
+        format.html
+        format.js
+      end
     end
+
   end
 
   def edit
@@ -35,28 +42,61 @@ class ReservationsController < ApplicationController
   def destroy
   end
 
-  # initial implementation to make ajax query working
-  def booked_dates
-    reservations = Reservation.where("room = ?", room)
-    booked_dates = []
-    reservations.each do |reservation|
-      booked_dates.push("#{reservation.checkin}", "#{reservation.checkout}")
-    end
-      respond_to do |format|
-      format.html
+  def room2
+    new_reservation("2")
+
+    respond_to do |format|
+      format.html 
       format.js
     end
-    return booked_dates
+  end
+
+  def room3
+    new_reservation("3")
+
+    respond_to do |format|
+      format.html 
+      format.js
+    end
+  end
+
+  def room4
+    new_reservation("4")
+
+    respond_to do |format|
+      format.html 
+      format.js
+    end
+  end
+
+  def room5
+    new_reservation("5")
+
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
 
   private
 
-    #not sure if user_id should be permitted here as well. may be abused
-    #to create some discounts in the future
     def reservation_params
       params.require(:reservation).permit(:name, :surname, :email,
                                           :phone, :room, :checkin, 
                                           :checkout)
+    end
+
+    # Function to create new reservation to keep code DRY
+    def new_reservation(room_number="1")
+      if logged_in?
+        @reservation = Reservation.new(name: current_user.name, 
+                                     surname: current_user.surname,
+                                     email: current_user.email, 
+                                     phone: current_user.phone,
+                                     room: room_number)
+      else
+        @reservation = Reservation.new(room: room_number)
+      end
     end
   
 end

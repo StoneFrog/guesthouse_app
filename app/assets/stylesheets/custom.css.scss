@@ -260,6 +260,20 @@ booking
   margin-bottom: 15px;
 }
 
+.room-links {
+  font-size: 22px;
+  color: $gray-light;
+  margin-right: 30px;
+  &:hover {
+    color: #AE1212;
+  }
+}
+
+.selected-room {
+  color: #AE1212;
+  text-decoration: underline;
+}
+
 /*----------------
 datepicker
 ----------------*/
@@ -289,6 +303,10 @@ datepicker
 
 .input-group.date .input-group-addon {
   cursor: none;
+}
+
+.datepicker > div {
+  display: flex;
 }
 
 /*----------------
