@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder',       '~> 2.0'
 gem 'sdoc',           '~> 0.4.0', group: :doc
+gem 'pg'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -25,10 +26,14 @@ gem 'sdoc',           '~> 0.4.0', group: :doc
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :development do 
+  gem 'capistrano', '~> 3.4'
+  gem 'rvm1-capistrano3', require: false
+  gem 'capistrano-rails', '~> 1.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+end
 
 group :development, :test do
-  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'web-console', '2.0.0.beta3'
@@ -42,7 +47,5 @@ group :test do
 end
 
 group :production do 
-  gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
-  gem 'puma',           '2.11.1'
 end
