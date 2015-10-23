@@ -13,6 +13,7 @@
 
 /config/database.yml
 /config/secrets.yml
+.env
 
 # Ignore all logfiles and tempfiles.
 /log/*

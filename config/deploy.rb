@@ -24,7 +24,7 @@ set :branch, "master"
 # Server
 
 # Symlinking
-set :linked_files, %w{ config/database.yml }
+set :linked_files, %w{ config/database.yml config/secrets.yml .env}
 
 # Passenger
 namespace :deploy do 
