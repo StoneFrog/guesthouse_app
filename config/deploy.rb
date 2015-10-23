@@ -15,7 +15,7 @@ set :pty, true
 #set :stages ["staging", "production"]
 #set :default_stage, "staging"
 set :rvm1_ruby_version, "ruby-2.2.3"
-
+set :passenger_restart_with_touch, true
 # Git
 set :scm, :git
 set :repo_url, 'https://github.com/Toquamer/guesthouse_app.git'
